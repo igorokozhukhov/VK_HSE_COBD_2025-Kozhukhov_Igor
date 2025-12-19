@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export HADOOP_HOME=/opt/hadoop
+export HIVE_HOME=/opt/hive
+export HIVE_CONF_DIR=/opt/hive/conf
+

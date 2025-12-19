@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  master:
+    build: .
+    container_name: hadoop-hw2
+    hostname: master
+    tty: true
+    stdin_open: true
+    ports:
+      - "8020:8020"   
+      - "9870:9870"   
+      - "9864:9864"   
+      - "8033:8033"   
+      - "28088:8088"  
+      - "9083:9083"  
+      - "10000:10000" 
+    volumes:
+      - ./data:/data
+      - ./setup_hive.sh:/data/setup_hive.sh 
+
