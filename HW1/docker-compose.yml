@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  master:
+    build: .
+    container_name: hadoop-master
+    hostname: master
+    tty: true
+    stdin_open: true
+    ports:
+      - "8020:8020"   # HDFS RPC
+      - "9870:9870"   # HDFS WebUI
+      - "9864:9864"   # DataNode web
+      - "8033:8033"   # YARN Scheduler RPC
+      - "28088:8088"  # YARN WebUI
+    volumes:
+      - ./data:/data  
