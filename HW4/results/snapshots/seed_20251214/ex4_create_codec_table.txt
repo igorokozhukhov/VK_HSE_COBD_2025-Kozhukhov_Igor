@@ -1,0 +1,16 @@
+ Container dz4-zookeeper  Running
+ Container dz4-clickhouse3  Running
+ Container dz4-clickhouse1  Running
+ Container dz4-clickhouse2  Running
+Creating codec-optimized table dz4.person_data_opt_codec from dz4.person_data_opt...
+
+Disk size comparison (compressed) between dz4.person_data_opt and dz4.person_data_opt_codec:
+521.40 KiB	446.39 KiB	14.39
+
+Per-column codecs (system.columns):
+id	UInt64	CODEC(LZ4)
+region	LowCardinality(String)	CODEC(ZSTD(3))
+date_birth	Date	CODEC(Delta(2), ZSTD(3))
+gender	UInt8	CODEC(T64, LZ4)
+is_marital	UInt8	CODEC(T64, LZ4)
+dt_create	DateTime	CODEC(DoubleDelta, LZ4)

@@ -1,0 +1,7 @@
+ Container dz4-zookeeper  Running
+ Container dz4-clickhouse1  Running
+ Container dz4-clickhouse2  Running
+ Container dz4-clickhouse3  Running
+Creating optimized table dz4.person_data_opt from dz4.person_data...
+Size + pk memory for person_data_opt:
+521.40 KiB	830.49 KiB	28.00 B	1	50000

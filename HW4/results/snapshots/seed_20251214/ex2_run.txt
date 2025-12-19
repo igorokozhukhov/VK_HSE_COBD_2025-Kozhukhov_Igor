@@ -1,0 +1,15 @@
+ Container dz4-zookeeper  Running
+ Container dz4-clickhouse1  Running
+ Container dz4-clickhouse2  Running
+ Container dz4-clickhouse3  Running
+Creating Exercise 2 tables...
+Starting insert experiment for 15s...
+Insert experiment finished. Flushing buffer and logs...
+
+Final row counts:
+big_target	250000
+small_target	2050
+
+Parts (active/inactive):
+big_target	5	0
+small_target	1	48

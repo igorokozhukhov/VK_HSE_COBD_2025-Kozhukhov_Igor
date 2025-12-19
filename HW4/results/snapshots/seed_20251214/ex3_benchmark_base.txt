@@ -1,0 +1,12 @@
+ Container dz4-zookeeper  Running
+ Container dz4-clickhouse3  Running
+ Container dz4-clickhouse1  Running
+ Container dz4-clickhouse2  Running
+Benchmarking dz4.person_data: RUNS=2
+
+Averages from system.query_log:
+q1	5	57.39 KiB	8.19 thousand	32.00 KiB
+q2	2	53.07 KiB	50.00 thousand	244.14 KiB
+
+Primary key memory (system.parts):
+dz4.person_data	0.00 B	0

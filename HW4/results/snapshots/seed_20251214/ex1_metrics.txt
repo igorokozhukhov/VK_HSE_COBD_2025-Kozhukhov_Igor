@@ -1,0 +1,30 @@
+ Container dz4-zookeeper  Running
+ Container dz4-clickhouse1  Running
+ Container dz4-clickhouse2  Running
+ Container dz4-clickhouse3  Running
+2025-12-14 16:04:13	7	0.00 B	0.00	0.00 B	SYSTEM FLUSH LOGS;
+2025-12-14 16:04:13	0	8.99 KiB	1.00	1.00 B	SELECT 1
+2025-12-14 16:04:13	54	36.21 KiB	2.00	110.00 B	CREATE TABLE dz4.rep_test ON CLUSTER cluster_1s_2r\n(\n    ts          DateTime,\n    contractid  UInt32,\n    userid      UInt32\n)\nENGINE = ReplicatedMergeTree(\'/clickhouse/tables/cluster_1s_2r/{shard}/dz4/rep_test\', \'{replica}\')\nPARTITION BY toYYYYMM(ts)\nORDER BY (contractid, toDate(ts), userid);
+2025-12-14 16:04:13	54	35.96 KiB	2.00	110.00 B	DROP TABLE IF EXISTS dz4.rep_test ON CLUSTER cluster_1s_2r SYNC;
+2025-12-14 16:04:13	14	912.00 B	0.00	0.00 B	/* ddl_entry=query-0000000011 */ CREATE TABLE dz4.rep_test UUID \'011480a3-1012-44c7-bc1d-145e979b0cab\' (`ts` DateTime, `contractid` UInt32, `userid` UInt32) ENGINE = ReplicatedMergeTree(\'/clickhouse/tables/cluster_1s_2r/{shard}/dz4/rep_test\', \'{replica}\') PARTITION BY toYYYYMM(ts) ORDER BY (contractid, toDate(ts), userid)
+2025-12-14 16:04:13	21	415.33 KiB	3.00	72.00 B	SELECT hostName() AS host, count() AS rows_cnt\nFROM clusterAllReplicas(\'cluster_1s_2r\', dz4.rep_test)\nGROUP BY host\nORDER BY host;
+2025-12-14 16:04:13	3	4.24 MiB	1.00	12.00 B	INSERT INTO dz4.rep_test (ts, contractid, userid) VALUES 
+2025-12-14 16:04:13	3	4.24 MiB	1.00	12.00 B	INSERT INTO dz4.rep_test (ts, contractid, userid) VALUES 
+2025-12-14 16:04:12	14	0.00 B	0.00	0.00 B	/* ddl_entry=query-0000000010 */ DROP TABLE IF EXISTS dz4.rep_test SYNC
+2025-12-14 16:04:12	10	284.66 KiB	20.00 thousand	58.62 KiB	SELECT\n    str_val,\n    count()                      AS rows_cnt,\n    uniqExact(int_val)           AS uniq_int_val,\n    round(avg(int_val), 2)       AS avg_int_val\nFROM dz4.metrics_mt\nGROUP BY str_val\nORDER BY str_val;
+2025-12-14 16:04:12	4	9.47 MiB	20.00 thousand	156.25 KiB	INSERT INTO dz4.metrics_mt (int_val, uuid_val, dt_val, str_val)\nSELECT\n    modulo(rand(), 999) + 1                                  AS int_val,\n    generateUUIDv4()                                         AS uuid_val,\n    now() - INTERVAL rand() / 1000 SECOND                    AS dt_val,\n    multiIf((rand() / 500000) <= 1500, \'A\',\n            (rand() / 500000) <= 3000, \'B\',\n            (rand() / 500000) <= 4500, \'C\',\n            (rand() / 500000) <= 6000, \'D\',\n            (rand() / 500000) <= 7300, \'E\',\n            \'F\')                                             AS str_val\nFROM numbers(20000);
+2025-12-14 16:04:12	2	784.00 B	0.00	0.00 B	CREATE TABLE dz4.metrics_mt\n(\n    int_val   UInt16,\n    uuid_val  UUID,\n    dt_val    DateTime,\n    str_val   FixedString(1)\n)\nENGINE = MergeTree()\nPARTITION BY toYYYYMM(dt_val)\nORDER BY (str_val, int_val)\nSETTINGS index_granularity = 8192;
+2025-12-14 16:04:12	0	0.00 B	0.00	0.00 B	DROP TABLE IF EXISTS dz4.metrics_mt;
+2025-12-14 16:04:12	66	36.01 KiB	2.00	110.00 B	-- Needed for ON CLUSTER DDL below (replicated table)\nCREATE DATABASE IF NOT EXISTS dz4 ON CLUSTER cluster_1s_2r;
+2025-12-14 16:04:12	0	0.00 B	0.00	0.00 B	/* ddl_entry=query-0000000009 */ CREATE DATABASE IF NOT EXISTS dz4 UUID \'b1c969c8-892b-4393-8f0f-53d81e3dd9b3\'
+2025-12-14 16:04:12	0	0.00 B	0.00	0.00 B	CREATE DATABASE IF NOT EXISTS dz4;
+2025-12-14 16:04:12	0	8.99 KiB	1.00	1.00 B	SELECT 1
+2025-12-14 16:04:12	0	8.99 KiB	1.00	1.00 B	SELECT 1
+2025-12-14 16:03:32	19	12.80 MiB	50.00	11.63 KiB	INSERT INTO dz4.small_target\n      SELECT *\n      FROM generateRandom(\n        \'dt_create DateTime64(3), int_1 UInt64, int_2 UInt64, int_3 UInt64, int_4 UInt64, int_5 UInt64,\n         str_1 String, str_2 String, str_3 String, str_4 String, str_5 String,\n         dt_1 DateTime64(3), dt_2 DateTime64(3), dt_3 DateTime64(3), dt_4 DateTime64(3), dt_5 DateTime64(3),\n         uuid_1 UUID, uuid_2 UUID, uuid_3 UUID, uuid_4 UUID, uuid_5 UUID\'\n      )\n      LIMIT 50;
+2025-12-14 16:03:32	18	12.96 MiB	50.00	11.65 KiB	INSERT INTO dz4.small_target\n      SELECT *\n      FROM generateRandom(\n        \'dt_create DateTime64(3), int_1 UInt64, int_2 UInt64, int_3 UInt64, int_4 UInt64, int_5 UInt64,\n         str_1 String, str_2 String, str_3 String, str_4 String, str_5 String,\n         dt_1 DateTime64(3), dt_2 DateTime64(3), dt_3 DateTime64(3), dt_4 DateTime64(3), dt_5 DateTime64(3),\n         uuid_1 UUID, uuid_2 UUID, uuid_3 UUID, uuid_4 UUID, uuid_5 UUID\'\n      )\n      LIMIT 50;
+metrics_mt	413.69 KiB	449.22 KiB	42.00 B	20000	3
+rep_test	180.00 B	24.00 B	40.00 B	2	2
+metrics_mt	uuid_val	0.00 B	0.00 B	\N
+metrics_mt	dt_val	0.00 B	0.00 B	\N
+metrics_mt	int_val	0.00 B	0.00 B	\N
+metrics_mt	str_val	0.00 B	0.00 B	\N

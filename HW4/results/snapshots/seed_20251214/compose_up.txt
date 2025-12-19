@@ -1,0 +1,4 @@
+ Container dz4-zookeeper  Running
+ Container dz4-clickhouse3  Running
+ Container dz4-clickhouse1  Running
+ Container dz4-clickhouse2  Running

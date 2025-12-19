@@ -1,0 +1,12 @@
+ClickHouse Database directory appears to contain a database; Skipping initialization
+Processing configuration file '/etc/clickhouse-server/config.xml'.
+Merging configuration file '/etc/clickhouse-server/config.d/docker_related_config.xml'.
+Merging configuration file '/etc/clickhouse-server/config.d/zzz_interserver_http_host.xml'.
+Merging configuration file '/etc/clickhouse-server/config.d/zzz_listen.xml'.
+Merging configuration file '/etc/clickhouse-server/config.d/zzz_macros.xml'.
+Merging configuration file '/etc/clickhouse-server/config.d/zzz_query_log.xml'.
+Merging configuration file '/etc/clickhouse-server/config.d/zzz_remote_servers.xml'.
+Merging configuration file '/etc/clickhouse-server/config.d/zzz_trace_log.xml'.
+Merging configuration file '/etc/clickhouse-server/config.d/zzz_zookeeper.xml'.
+Logging trace to /var/log/clickhouse-server/clickhouse-server.log
+Logging errors to /var/log/clickhouse-server/clickhouse-server.err.log

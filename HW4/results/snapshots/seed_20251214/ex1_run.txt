@@ -1,0 +1,25 @@
+ Container dz4-zookeeper  Running
+ Container dz4-clickhouse3  Running
+ Container dz4-clickhouse2  Running
+ Container dz4-clickhouse1  Running
+Running exercise 1 SQL...
+clickhouse2	9000	0		1	0
+clickhouse1	9000	0		0	0
+A	3508	965	494.91
+B	3545	983	500.23
+C	3466	970	492.58
+D	3429	970	493.92
+E	3027	943	492.18
+F	3025	945	500.32
+clickhouse2	9000	0		1	0
+clickhouse1	9000	0		0	0
+clickhouse2	9000	0		1	0
+clickhouse1	9000	0		0	0
+007e718bbdb1	1
+b6bebe6feb8d	2
+
+Now run checks (system tables/functions):
+  /Users/mironov.i/Desktop/ВУЗ/Большие данные/dz4/scripts/ex1_checks.sh
+
+Now run metrics queries:
+  /Users/mironov.i/Desktop/ВУЗ/Большие данные/dz4/scripts/ex1_metrics.sh
